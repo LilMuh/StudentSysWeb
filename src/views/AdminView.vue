@@ -1,5 +1,7 @@
 <template>
   <div>
+
+    <!--    Tool bar on the top (Search/ Clear/ Add)    -->
     <div style="margin-top: 10px">
       <el-input placeholder="username" v-model="params.username" clearable style="width: 200px;"></el-input>
       <el-input placeholder="workerID" v-model="params.workerID" clearable
@@ -10,6 +12,7 @@
       <el-button type="primary" style="margin-left: 10px;" @click="add()" plain>Add</el-button>
     </div>
 
+    <!--    Main table with data    -->
     <div>
       <el-table :data="tableData"
                 style="width: 100%; margin-top: 22px"
@@ -42,6 +45,7 @@
       </el-table>
     </div>
 
+    <!--    Pagination    -->
     <div style="margin-top: 30px">
       <el-pagination
           @current-change="handleCurrentChange"
@@ -50,21 +54,70 @@
       </el-pagination>
     </div>
 
+    <!--    Add account information    -->
     <div>
-      <el-dialog title="Please enter account information" :visible.sync="dialogFormVisible" width="30%">
+      <el-dialog title="Account information" :visible.sync="dialogFormVisible" width="40%">
         <el-form :model="form">
           <el-form-item label="Username" label-width="30%">
-            <el-input v-model="form.username" autocomplete="off" style=" width:65%"></el-input>
+            <el-input v-popover:username placeholder="abc123" v-model="form.username" autocomplete="off" style=" width:55%"></el-input>
           </el-form-item>
+          <el-popover
+              ref="username"
+              placement="right"
+              width="50"
+              trigger="focus">
+            <div style="padding: 3px">
+              <div style="margin-bottom: 5px; font-size: 13px">
+                Length: <strong>3~15</strong>
+              </div>
+              <div style="font-size: 13px">
+                At least <strong>1</strong> letter
+              </div>
+            </div>
+          </el-popover>
           <el-form-item label="Password" label-width="30%">
-            <el-input v-model="form.password" autocomplete="off" style=" width:65%"></el-input>
+            <el-input placeholder="Abc12345." v-model="form.password" autocomplete="off" style=" width:55%"></el-input>
           </el-form-item>
           <el-form-item label="Worker ID" label-width="30%">
-            <el-input v-model="form.workerID" autocomplete="off" style=" width:65%"></el-input>
+            <el-input v-popover:workerID placeholder="111111000011110010" v-model="form.workerID" autocomplete="off" style=" width:55%"></el-input>
           </el-form-item>
+          <el-popover
+              ref="workerID"
+              placement="right"
+              width="50"
+              trigger="focus">
+            <div style="padding: 3px">
+              <div style="margin-bottom: 5px; font-size: 13px">
+                <strong>Pure number</strong>
+              </div>
+              <div style="margin-bottom: 5px; font-size: 13px">
+                Length: <strong>18</strong>
+              </div>
+              <div style="font-size: 13px">
+                Can't start with <strong>0</strong>
+              </div>
+            </div>
+          </el-popover>
           <el-form-item label="Phone number" label-width="30%">
-            <el-input v-model="form.phoneNumber" autocomplete="off" style=" width:65%"></el-input>
+            <el-input v-popover:phone placeholder="4168886666" v-model="form.phoneNumber" autocomplete="off" style=" width:55%"></el-input>
           </el-form-item>
+          <el-popover
+              ref="phone"
+              placement="right"
+              width="50"
+              trigger="focus">
+            <div style="padding: 3px">
+              <div style="margin-bottom: 5px; font-size: 13px">
+                <strong>Pure number</strong>
+              </div>
+              <div style="margin-bottom: 5px; font-size: 13px">
+                Length: <strong>10</strong>
+              </div>
+              <div style="font-size: 13px">
+                Can't start with <strong>0</strong>
+              </div>
+            </div>
+          </el-popover>
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button @click="dialogFormVisible = false">Cancel</el-button>
@@ -146,7 +199,7 @@ export default {
         } else {
           this.$message({
             message: res.msg,
-            type: 'fail'
+            type: 'error'
           });
         }
       })
@@ -163,7 +216,7 @@ export default {
         } else {
           this.$message({
             message: res.msg,
-            type: 'fail'
+            type: 'error'
           });
         }
       })
