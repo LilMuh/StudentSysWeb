@@ -6,3 +6,5 @@ Turning a java-based student system ([StudentSys](https://github.com/LilMuh/Stud
   3. Using Springboot and Axios as the support to deploy the connection between front-end and back-end database.
 
 ### 2023.11.03
+  1. Added "Exception" directory into back-end system to provide error messages
+  2. Optimized "Add" funtion in AdminView.vue and some methods to verify input's format and uniqueness(username, workerID, and phone)
