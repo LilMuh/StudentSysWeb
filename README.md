@@ -1,4 +1,4 @@
-# StudentSysWeb_Updated
+# StudentSysWeb
 Turning a java-based student system ([StudentSys](https://github.com/LilMuh/StudentSystem/tree/main)) into a practical website
 ### 2023.11.02
   1. Using Vue.js to build up front-end(static) web page
