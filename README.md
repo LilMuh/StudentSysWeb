@@ -9,4 +9,4 @@ Turning a java-based student system ([StudentSys](https://github.com/LilMuh/Stud
   1. Added a new page (LoginView) before HomeView and level up the router.
   2. Added "Exception" directory into back-end system to provide error messages
   3. Optimized "Add" funtion in AdminView.vue and some methods to verify input's format and uniqueness(username, workerID, and phone)
-  4. Fully developed the login function. On the login page, it will detect if username and password is typed in, and then find the information in database through Springboot
+  4. Fully developed the login function. On the login page, it will detect if username and password are both typed in, and then find the information in database through Springboot
