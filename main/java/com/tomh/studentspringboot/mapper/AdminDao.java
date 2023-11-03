@@ -22,4 +22,7 @@ public interface AdminDao extends Mapper<Admin> {
 
     @Select("select * from admin where phonenumber = #{phone} limit 1")
     Admin findByPhone(@Param("phone") String phoneNumber);
+
+    @Select("select * from admin where username = #{username} and password = #{password} limit 1")
+    Admin findByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 }

@@ -76,14 +76,24 @@ public class AdminService {
         adminDao.deleteByPrimaryKey(id);
     }
 
-//    public Admin login(Admin admin) {
-//        // 1. determine for null input
-//
-//        // 2. search admin info in the database
-//        // If there exist the user, log in successfully
-//        // If user does not exist, log in fail
-//        return new Admin();
-//    }
+    public Admin login(Admin admin) {
+        // 1. determine for null input
+        if(
+                (admin.getUsername()==null || "".equals(admin.getUsername()))||
+                (admin.getPassword()==null || "".equals(admin.getPassword()))
+        ){
+            throw new CustomException("Please provide the username or password");
+        }
+        // 2. search admin info in the database
+        Admin user = adminDao.findByUsernameAndPassword(admin.getUsername(), admin.getPassword());
+        if(user == null){
+            // If user does not exist, log in fail
+            throw new CustomException("The username or password is incorrect");
+        }else{
+            // If there exist the user, log in successfully
+            return user;
+        }
+    }
 
     private static boolean checkUsername(String username){
         int len = username.length();
