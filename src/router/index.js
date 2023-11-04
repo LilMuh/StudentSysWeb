@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from "@/views/LoginView.vue";
 import AdminView from "@/views/AdminView.vue";
 import LayoutView from "@/views/Layout.vue";
+import RegisterView from "@/views/RegisterView.vue";
 
 Vue.use(VueRouter)
 
@@ -12,7 +13,13 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: LoginView
+    component: LoginView,
+    children: []
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: RegisterView
   },
   {
     path: '/',
