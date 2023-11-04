@@ -6,7 +6,12 @@ Turning a java-based student system ([StudentSys](https://github.com/LilMuh/Stud
   3. Using Springboot and Axios as the support to deploy the connection between front-end and back-end database.
 
 ### 2023.11.03
-  1. Added a new page (LoginView) before HomeView and level up the router.
-  2. Added "Exception" directory into back-end system to provide error messages
+  1. Created a new page (LoginView.vue) before HomeView and level up the router.
+  2. Added "Exception" directory into back-end system to show error messages
   3. Optimized "Add" funtion in AdminView.vue and some methods to verify input's format and uniqueness(username, workerID, and phone)
   4. Fully developed the login function. On the login page, it will detect if username and password are both typed in, and then find the information in database through Springboot
+
+### 2023.11.04
+  1. Created a page (RegisterView.vue) for new admins to sign up
+  2. Add logics to check whether register information is under a correct format.
+  3. 
