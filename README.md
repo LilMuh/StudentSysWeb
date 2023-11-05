@@ -14,4 +14,5 @@ Turning a java-based student system ([StudentSys](https://github.com/LilMuh/Stud
 ### 2023.11.04
   1. Created a page (RegisterView.vue) for new admins to sign up
   2. Add logics to check whether register information is under a correct format.
-  3. 
+  3. Created new UI (checkmark and crossmark) beside the input box to notify whether the input format is correct/valid
+  4. Add new UI to add method on AdminView.vue page to notify if the input is valid on format.
