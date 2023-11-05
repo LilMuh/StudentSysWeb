@@ -34,6 +34,12 @@ public class AdminController {
         return Result.success(userLogin);
     }
 
+    @PostMapping("/register")
+    public Result register(@RequestBody Admin admin){
+        adminService.add(admin);
+        return Result.success();
+    }
+
     @GetMapping("/getAdmin")
     public Result getAdmin(){
         List<Admin> list = adminService.getAdmin();

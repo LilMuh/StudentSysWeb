@@ -8,6 +8,7 @@
           <div class="input-container">
             <el-input
                 type="text"
+                v-popover:username
                 id="username"
                 v-model="admin.username"
                 placeholder="Enter your username"
@@ -26,6 +27,7 @@
                   :class="'el-icon-circle-close'"
               ></i>
             </div>
+
           </div>
         </div>
         <div class="form-group">
@@ -34,6 +36,7 @@
             <el-input
                 type="password"
                 id="password"
+                v-popover:password
                 v-model="admin.password"
                 placeholder="Enter your password"
                 @input="checkPassword"
@@ -59,7 +62,7 @@
             <el-input
                 type="password"
                 id="confirm-password"
-                v-model="admin.confirmPassword"
+                v-model="confirmPassword"
                 placeholder="Confirm your password"
                 @input="checkConfirmPassword"
                 size="large"
@@ -67,12 +70,12 @@
             <div class="validation-icons">
               <i
                   class="validation-icon-check"
-                  v-if="admin.confirmPassword && validate.isConfirmPasswordValid"
+                  v-if="confirmPassword && validate.isConfirmPasswordValid"
                   :class="'el-icon-circle-check'"
               ></i>
               <i
                   class="validation-icon-cross"
-                  v-if="admin.confirmPassword && !validate.isConfirmPasswordValid"
+                  v-if="confirmPassword && !validate.isConfirmPasswordValid"
                   :class="'el-icon-circle-close'"
               ></i>
             </div>
@@ -85,6 +88,7 @@
                 type="text"
                 id="workerID"
                 v-model="admin.workerID"
+                v-popover:workerID
                 placeholder="Enter your worker ID"
                 @input="checkWorkerID"
                 size="large"
@@ -108,8 +112,9 @@
           <div class="input-container">
             <el-input
                 type="text"
-                id="phone"
-                v-model="admin.phone"
+                id="phoneNumber"
+                v-popover:phoneNumber
+                v-model="admin.phoneNumber"
                 placeholder="Enter your phone number"
                 @input="checkPhone"
                 size="large"
@@ -117,18 +122,92 @@
             <div class="validation-icons">
               <i
                   class="validation-icon-check"
-                  v-if="admin.phone && validate.isPhoneValid"
+                  v-if="admin.phoneNumber && validate.isPhoneValid"
                   :class="'el-icon-circle-check'"
               ></i>
               <i
                   class="validation-icon-cross"
-                  v-if="admin.phone && !validate.isPhoneValid"
+                  v-if="admin.phoneNumber && !validate.isPhoneValid"
                   :class="'el-icon-circle-close'"
               ></i>
             </div>
           </div>
         </div>
         <button class="register-button-disabled" type="submit">Register</button>
+        <el-popover
+            ref="username"
+            placement="right"
+            width="50"
+            trigger="focus">
+          <div style="padding: 3px">
+            <div style="margin-bottom: 5px; font-size: 13px">
+              Length: <strong>3~15</strong>
+            </div>
+            <div style="font-size: 13px">
+              At least <strong>1</strong> letter
+            </div>
+          </div>
+        </el-popover>
+        <el-popover
+            ref="password"
+            placement="right"
+            width="50"
+            trigger="focus">
+          <div style="padding: 3px">
+            <div style="margin-bottom: 5px; font-size: 13px">
+              <strong>At least: </strong>
+            </div>
+            <div style="margin-bottom: 5px; font-size: 13px">
+              <strong>1</strong> uppercase letter
+            </div>
+            <div style="margin-bottom: 5px; font-size: 13px">
+              <strong>1</strong> lowercase letter
+            </div>
+            <div style="margin-bottom: 5px; font-size: 13px">
+              <strong>1</strong> number
+            </div>
+            <div style="margin-bottom: 5px; font-size: 13px">
+              <strong>1</strong> symbol
+            </div>
+            <div style="font-size: 13px">
+              Length: <strong>at least 8</strong>
+            </div>
+          </div>
+        </el-popover>
+        <el-popover
+            ref="workerID"
+            placement="right"
+            width="50"
+            trigger="focus">
+          <div style="padding: 3px">
+            <div style="margin-bottom: 5px; font-size: 13px">
+              <strong>Pure number</strong>
+            </div>
+            <div style="margin-bottom: 5px; font-size: 13px">
+              Length: <strong>18</strong>
+            </div>
+            <div style="font-size: 13px">
+              Can't start with <strong>0</strong>
+            </div>
+          </div>
+        </el-popover>
+        <el-popover
+            ref="phoneNumber"
+            placement="right"
+            width="50"
+            trigger="focus">
+          <div style="padding: 3px">
+            <div style="margin-bottom: 5px; font-size: 13px">
+              <strong>Pure number</strong>
+            </div>
+            <div style="margin-bottom: 5px; font-size: 13px">
+              Length: <strong>10</strong>
+            </div>
+            <div style="font-size: 13px">
+              Can't start with <strong>0</strong>
+            </div>
+          </div>
+        </el-popover>
       </form>
     </div>
   </div>
@@ -136,15 +215,17 @@
 
 
 <script>
+import request from "@/utils/request";
+
 export default {
   data() {
     return {
+      confirmPassword: "",
       admin:{
         username: "",
         password: "",
-        confirmPassword: "",
         workerID: "",
-        phone: "",
+        phoneNumber: "",
       },
       validate:{
         isUsernameValid: false,
@@ -157,6 +238,23 @@ export default {
   },
   methods: {
     register() {
+      console.log(this.admin)
+      // Send a request to a backend API to check credentials
+      request.post("/admin/register", this.admin).then(res => {
+        if (res.code === '0') {
+          // If register is successful, redirect to another page
+          this.$message({
+            message: 'Successfully registered',
+            type: 'success'
+          });
+          this.$router.push("/login");
+        } else {
+          this.$message({
+            message: res.msg,
+            type: 'error'
+          });
+        }
+      })
 
     },
     checkUsername() {
@@ -196,7 +294,7 @@ export default {
       const hasSpecialSymbol = /[,.!@#$%^&*_+=`~/*?<>;':]/.test(password);
 
       // Check if the confirmed password is the same
-      const sameConfirmed = this.admin.password===this.admin.confirmPassword;
+      const sameConfirmed = this.admin.password===this.confirmPassword;
 
       // Check all conditions
       this.validate.isPasswordValid =
@@ -212,7 +310,7 @@ export default {
       }
     },
     checkConfirmPassword() {
-      this.validate.isConfirmPasswordValid = this.admin.password===this.admin.confirmPassword;
+      this.validate.isConfirmPasswordValid = this.admin.password===this.confirmPassword;
       if(this.validate.isConfirmPasswordValid){
         this.ReadyRegistration();
       }
@@ -241,16 +339,16 @@ export default {
       if(this.validate.isWorkerIDValid){this.ReadyRegistration();}
     },
     checkPhone() {
-      const phone = this.admin.phone;
+      const phoneNumber = this.admin.phoneNumber;
 
-      // Check if the phone number is of length 10
-      const isLengthValid = phone.length === 10;
+      // Check if the phoneNumber number is of length 10
+      const isLengthValid = phoneNumber.length === 10;
 
-      // Check if the phone number does not start with 0
-      const doesNotStartWithZero = phone[0] !== "0";
+      // Check if the phoneNumber number does not start with 0
+      const doesNotStartWithZero = phoneNumber[0] !== "0";
 
-      // Check if the phone number consists of pure numbers
-      const hasPureNumbers = /^[0-9]{10}$/.test(phone);
+      // Check if the phoneNumber number consists of pure numbers
+      const hasPureNumbers = /^[0-9]{10}$/.test(phoneNumber);
 
       // Check all conditions
       this.validate.isPhoneValid =
@@ -298,7 +396,7 @@ export default {
 
 .register-heading {
   text-align: center;
-  color: #fff;
+  color: #fff9f1;
   font-size: 24px;
   margin-bottom: 35px;
 }
@@ -310,7 +408,7 @@ export default {
 label {
   display: block;
   font-weight: bold;
-  color: #fff;
+  color: #fff9f1;
   font-size: 16px;
 }
 
@@ -318,7 +416,7 @@ label {
   width: 100%;
   padding: 12px;
   background-color: #027dc9;
-  color: #fff;
+  color: #fff9f1;
   border: none;
   border-radius: 10px;
   margin-top: 5px;
@@ -331,7 +429,7 @@ label {
   width: 100%;
   padding: 12px;
   background-color: #979797;
-  color: #fff;
+  color: #fff9f1;
   border: none;
   border-radius: 10px;
   margin-top: 5px;

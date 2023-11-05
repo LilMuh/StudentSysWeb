@@ -76,8 +76,34 @@
             </div>
           </el-popover>
           <el-form-item label="Password" label-width="30%">
-            <el-input placeholder="Abc12345." v-model="form.password" autocomplete="off" style=" width:55%"></el-input>
+            <el-input v-popover:password placeholder="Abc12345." v-model="form.password" autocomplete="off" style=" width:55%"></el-input>
           </el-form-item>
+          <el-popover
+              ref="password"
+              placement="right"
+              width="50"
+              trigger="focus">
+            <div style="padding: 3px">
+              <div style="margin-bottom: 5px; font-size: 13px">
+                <strong>At least: </strong>
+              </div>
+              <div style="margin-bottom: 5px; font-size: 13px">
+                <strong>1</strong> uppercase letter
+              </div>
+              <div style="margin-bottom: 5px; font-size: 13px">
+                <strong>1</strong> lowercase letter
+              </div>
+              <div style="margin-bottom: 5px; font-size: 13px">
+                <strong>1</strong> number
+              </div>
+              <div style="margin-bottom: 5px; font-size: 13px">
+                <strong>1</strong> symbol
+              </div>
+              <div style="font-size: 13px">
+                Length: <strong>at least 8</strong>
+              </div>
+            </div>
+          </el-popover>
           <el-form-item label="Worker ID" label-width="30%">
             <el-input v-popover:workerID placeholder="111111000011110010" v-model="form.workerID" autocomplete="off" style=" width:55%"></el-input>
           </el-form-item>

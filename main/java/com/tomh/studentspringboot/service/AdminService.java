@@ -37,7 +37,7 @@ public class AdminService {
                 (admin.getWorkerID()==null || "".equals(admin.getWorkerID()))||
                 (admin.getPhoneNumber()==null || "".equals(admin.getPhoneNumber()))
         ){
-            throw new CustomException("Please fill out every information");
+            throw new CustomException("Please fill out all the information");
         }
         // Determine if user already exists
         Admin username = adminDao.findByName(admin.getUsername());
