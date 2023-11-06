@@ -5,7 +5,7 @@
         <img src="@/assets/logo.png" alt="" style="width: 40px; position: relative; top: 10px;">
         <span style="font-size: 20px; margin-left: 15px; color: white;">Student System</span>
           <el-dropdown trigger="click" style="float: right; line-height: 60px; height: 60px">
-            <span class="el-dropdown-link">admin123<i class="el-icon-more el-icon--right"></i></span>
+            <span class="el-dropdown-link">{{ user.username }}<i class="el-icon-user el-icon--right"></i></span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item icon="el-icon-switch-button">Log out</el-dropdown-item>
             </el-dropdown-menu>
@@ -56,7 +56,12 @@
 
 <script>
 export default {
-  name: "Layout"
+  name: "Layout",
+  data(){
+    return {
+      user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")): {}
+    }
+  }
 }
 </script>
 
@@ -70,7 +75,7 @@ export default {
   border-radius: 9px;
   margin-top: 15px;
   color: #fcfcfc;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .el-dropdown-link:hover{
