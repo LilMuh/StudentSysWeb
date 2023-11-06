@@ -49,7 +49,7 @@ export default {
             message: 'Successfully Logged in',
             type: 'success'
           });
-          console.log("Further manipulation:", res.data)
+          localStorage.setItem("user", JSON.stringify(res.data));
           this.$router.push("/");
         } else {
           this.$message({

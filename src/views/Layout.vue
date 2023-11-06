@@ -4,6 +4,12 @@
       <el-header style="background-color: rgb(78, 84, 90);">
         <img src="@/assets/logo.png" alt="" style="width: 40px; position: relative; top: 10px;">
         <span style="font-size: 20px; margin-left: 15px; color: white;">Student System</span>
+          <el-dropdown trigger="click" style="float: right; line-height: 60px; height: 60px">
+            <span class="el-dropdown-link">admin123<i class="el-icon-more el-icon--right"></i></span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item icon="el-icon-switch-button">Log out</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
       </el-header>
     </el-container>
 
@@ -57,5 +63,18 @@ export default {
 <style scoped>
 .el-menu {
   border-right: none !important;
+}
+
+.el-dropdown-link{
+  padding: 6px 6px 6px 9px;
+  border-radius: 9px;
+  margin-top: 15px;
+  color: #fcfcfc;
+  font-size: 16px;
+}
+
+.el-dropdown-link:hover{
+  background-color: rgb(72, 78, 85);
+  cursor: pointer;
 }
 </style>
