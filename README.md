@@ -16,3 +16,6 @@ Turning a java-based student system ([StudentSys](https://github.com/LilMuh/Stud
   2. Add logics to check whether register information is under a correct format.
   3. Created new UI (checkmark and crossmark) beside the input box to notify whether the input format is correct/valid
   4. Add new UI to add method on AdminView.vue page to notify if the input is valid on format.
+
+### 2023.11.05
+  1. Optimized the visual effect and website layout by adding more interactive APIs.
