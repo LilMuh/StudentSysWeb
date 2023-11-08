@@ -4,12 +4,14 @@
       <el-header style="background-color: rgb(78, 84, 90);">
         <img src="@/assets/logo.png" alt="" style="width: 40px; position: relative; top: 10px;">
         <span style="font-size: 20px; margin-left: 15px; color: white;">Student System</span>
-          <el-dropdown trigger="click" style="float: right; line-height: 60px; height: 60px">
-            <span class="el-dropdown-link">{{ user.username }}<i class="el-icon-user el-icon--right"></i></span>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item icon="el-icon-switch-button"><div @click="logout">Log out</div></el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
+        <el-dropdown trigger="click" style="float: right; line-height: 60px; height: 60px">
+          <span class="el-dropdown-link">{{ user.username }}<i class="el-icon-user el-icon--right"></i></span>
+          <el-dropdown-menu slot="dropdown">
+            <div @click="logout">
+              <el-dropdown-item icon="el-icon-switch-button">Log out</el-dropdown-item>
+            </div>
+          </el-dropdown-menu>
+        </el-dropdown>
       </el-header>
     </el-container>
 
@@ -58,14 +60,14 @@
 export default {
   name: "Layout",
 
-  data(){
+  data() {
     return {
-      user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")): {}
+      user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {}
     }
   },
 
-  methods:{
-    logout(){
+  methods: {
+    logout() {
       localStorage.removeItem("user");
       this.$router.push("/login")
     },
@@ -78,7 +80,7 @@ export default {
   border-right: none !important;
 }
 
-.el-dropdown-link{
+.el-dropdown-link {
   padding: 6px 6px 6px 9px;
   border-radius: 9px;
   margin-top: 15px;
@@ -86,7 +88,7 @@ export default {
   font-size: 14px;
 }
 
-.el-dropdown-link:hover{
+.el-dropdown-link:hover {
   background-color: rgb(72, 78, 85);
   cursor: pointer;
 }

@@ -209,6 +209,7 @@
           </div>
         </el-popover>
       </form>
+      <router-link to="/login" class="back-link"><i class="el-icon-arrow-left"></i>Back</router-link>
     </div>
   </div>
 </template>
@@ -221,13 +222,13 @@ export default {
   data() {
     return {
       confirmPassword: "",
-      admin:{
+      admin: {
         username: "",
         password: "",
         workerID: "",
         phoneNumber: "",
       },
-      validate:{
+      validate: {
         isUsernameValid: false,
         isPasswordValid: false,
         isConfirmPasswordValid: false,
@@ -271,7 +272,7 @@ export default {
 
       // Check all conditions
       this.validate.isUsernameValid = isLengthValid && isAlphanumeric && hasLetter;
-      if(this.validate.isUsernameValid){
+      if (this.validate.isUsernameValid) {
         this.ReadyRegistration();
       }
     },
@@ -294,24 +295,23 @@ export default {
       const hasSpecialSymbol = /[,.!@#$%^&*_+=`~/*?<>;':]/.test(password);
 
       // Check if the confirmed password is the same
-      const sameConfirmed = this.admin.password===this.confirmPassword;
+      const sameConfirmed = this.admin.password === this.confirmPassword;
 
       // Check all conditions
       this.validate.isPasswordValid =
           hasUppercase && hasLowercase && hasNumber && isLengthValid && hasSpecialSymbol;
-      if(sameConfirmed){
-        this.validate.isConfirmPasswordValid=true;
+      if (sameConfirmed) {
+        this.validate.isConfirmPasswordValid = true;
+      } else {
+        this.validate.isConfirmPasswordValid = false;
       }
-      else{
-        this.validate.isConfirmPasswordValid=false;
-      }
-      if(this.validate.isPasswordValid){
+      if (this.validate.isPasswordValid) {
         this.ReadyRegistration();
       }
     },
     checkConfirmPassword() {
-      this.validate.isConfirmPasswordValid = this.admin.password===this.confirmPassword;
-      if(this.validate.isConfirmPasswordValid){
+      this.validate.isConfirmPasswordValid = this.admin.password === this.confirmPassword;
+      if (this.validate.isConfirmPasswordValid) {
         this.ReadyRegistration();
       }
     },
@@ -336,7 +336,9 @@ export default {
           doesNotStartWithZero &&
           hasPureNumbers &&
           isLastCharValid;
-      if(this.validate.isWorkerIDValid){this.ReadyRegistration();}
+      if (this.validate.isWorkerIDValid) {
+        this.ReadyRegistration();
+      }
     },
     checkPhone() {
       const phoneNumber = this.admin.phoneNumber;
@@ -353,16 +355,18 @@ export default {
       // Check all conditions
       this.validate.isPhoneValid =
           isLengthValid && doesNotStartWithZero && hasPureNumbers;
-      if(this.validate.isPhoneValid){this.ReadyRegistration();}
+      if (this.validate.isPhoneValid) {
+        this.ReadyRegistration();
+      }
     },
-    ReadyRegistration(){
-      if(
-          this.validate.isUsernameValid ===  true &&
-          this.validate.isPasswordValid ===  true &&
-          this.validate.isConfirmPasswordValid ===  true &&
-          this.validate.isWorkerIDValid ===  true &&
-          this.validate.isPhoneValid ===  true
-      ){
+    ReadyRegistration() {
+      if (
+          this.validate.isUsernameValid === true &&
+          this.validate.isPasswordValid === true &&
+          this.validate.isConfirmPasswordValid === true &&
+          this.validate.isWorkerIDValid === true &&
+          this.validate.isPhoneValid === true
+      ) {
         const btn = document.querySelector(".register-button-disabled");
         btn.classList.remove("register-button-disabled");
         btn.classList.add("register-button");
@@ -433,9 +437,8 @@ label {
   border: none;
   border-radius: 10px;
   margin-top: 5px;
-  /*cursor: pointer;*/
   font-size: 18px;
-  transition: background-color 0.2s;
+  pointer-events: none;
 }
 
 .register-button:hover {
@@ -453,6 +456,7 @@ label {
   right: 10px;
   font-size: 18px;
   color: #d00000;
+  margin-right: -185px;
 }
 
 .validation-icon-check {
@@ -462,5 +466,20 @@ label {
   right: 10px;
   font-size: 18px;
   color: #28c700;
+  margin-right: -185px;
+}
+
+.back-link {
+  justify-content: center;
+  align-items: center;
+  width:14%;
+  text-align: center;
+  display: block;
+  color: #067fc9; /* Blue color for links */
+  font-size: 16px;
+  text-decoration: underline;
+  margin:auto;
+  margin-top: 15px;
+  padding-right: 7px;
 }
 </style>

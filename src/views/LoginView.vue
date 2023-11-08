@@ -23,6 +23,8 @@
         </div>
         <button class="login-button" type="submit">Login</button>
       </form>
+      <router-link to="/register" class="register-link">Don't have an account? Register here</router-link>
+      <router-link to="/forget" class="forget-link">Forget username or password</router-link>
     </div>
   </div>
 </template>
@@ -124,5 +126,22 @@ input {
 
 .login-button:hover {
   background-color: #0056b3; /* Darker blue on hover */
+}
+
+.register-link {
+   text-align: center;
+   display: block;
+   color: #047ec9; /* Blue color for links */
+   font-size: 15px;
+   text-decoration: underline;
+   margin-top: 25px; /* Adjust the margin as needed */
+ }
+.forget-link {
+  text-align: center;
+  display: block;
+  color: #067fc9; /* Blue color for links */
+  font-size: 15px;
+  text-decoration: underline;
+  margin-top: 15px; /* Adjust the margin as needed */
 }
 </style>

@@ -28,10 +28,27 @@ public class AdminController {
         return Result.success();
     }
 
+    @PostMapping("/changePassword")
+    public Result changePassword(@RequestBody Admin admin){
+        if(admin.getId()==0){
+            adminService.add(admin);
+        }else{
+            adminService.update(admin);
+        }
+        return Result.success();
+    }
+
     //login method
     @PostMapping("/login")
     public Result login(@RequestBody Admin admin){
         Admin userLogin = adminService.login(admin);
+        return Result.success(userLogin);
+    }
+
+    //find user by their workerID and phone number
+    @PostMapping("/forget")
+    public Result findUser(@RequestBody Admin admin){
+        Admin userLogin = adminService.findUser(admin);
         return Result.success(userLogin);
     }
 

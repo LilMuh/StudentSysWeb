@@ -7,9 +7,9 @@
       <el-input placeholder="workerID" v-model="params.workerID" clearable
                 style="width: 200px; margin-left: 10px; margin-right: 10px"></el-input>
       <el-input placeholder="phone" v-model="params.phone" clearable style="width: 200px;"></el-input>
-      <el-button type="warning" style="margin-left: 15px;" @click="search()" plain>Search</el-button>
-      <el-button type="warning" style="margin-left: 10px;" @click="clear()" plain>Clear</el-button>
-      <el-button type="primary" style="margin-left: 10px;" @click="add()" plain>Add</el-button>
+      <el-button type="warning" icon="el-icon-search" style="margin-left: 15px;" @click="search()" plain>Search</el-button>
+      <el-button type="warning" style="margin-left: 10px;" icon="el-icon-refresh-right" @click="clear()" plain>Clear</el-button>
+      <el-button type="primary" style="margin-left: 10px;" icon="el-icon-plus" @click="add()" plain>Add</el-button>
     </div>
 
     <!--    Main table with data    -->
@@ -29,7 +29,7 @@
         </el-table-column>
         <el-table-column prop="command" label="Command">
           <template slot-scope="scope">
-            <el-button type="primary" plain @click="edit(scope.row)" style="margin-right: 10px">Modify</el-button>
+            <el-button type="primary" plain @click="edit(scope.row)" style="margin-right: 10px" icon="el-icon-edit">Modify</el-button>
             <el-popconfirm
                 confirm-button-text='OK'
                 cancel-button-text='Cancel'
@@ -38,7 +38,7 @@
                 title="Are you sure to delete？"
                 @confirm="del(scope.row.id)"
             >
-              <el-button type="danger" plain slot="reference">Delete</el-button>
+              <el-button type="danger" plain slot="reference" icon="el-icon-delete-solid">Delete</el-button>
             </el-popconfirm>
           </template>
         </el-table-column>

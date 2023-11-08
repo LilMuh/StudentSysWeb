@@ -25,4 +25,7 @@ public interface AdminDao extends Mapper<Admin> {
 
     @Select("select * from admin where username = #{username} and password = #{password} limit 1")
     Admin findByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
+
+    @Select("select * from admin where workerid = #{workerID} and phonenumber = #{phoneNumber} limit 1")
+    Admin findByWorkerIDAndPhone(String workerID, String phoneNumber);
 }
