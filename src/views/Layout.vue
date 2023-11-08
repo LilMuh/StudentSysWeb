@@ -7,7 +7,7 @@
           <el-dropdown trigger="click" style="float: right; line-height: 60px; height: 60px">
             <span class="el-dropdown-link">{{ user.username }}<i class="el-icon-user el-icon--right"></i></span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item icon="el-icon-switch-button" @click="logout">Log out</el-dropdown-item>
+              <el-dropdown-item icon="el-icon-switch-button"><div @click="logout">Log out</div></el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
       </el-header>
