@@ -28,12 +28,14 @@ public class AdminController {
         return Result.success();
     }
 
+    //login method
     @PostMapping("/login")
     public Result login(@RequestBody Admin admin){
         Admin userLogin = adminService.login(admin);
         return Result.success(userLogin);
     }
 
+    //register method
     @PostMapping("/register")
     public Result register(@RequestBody Admin admin){
         adminService.add(admin);
