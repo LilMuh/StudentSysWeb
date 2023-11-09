@@ -24,3 +24,6 @@ Turning a java-based student system ([StudentSys](https://github.com/LilMuh/Stud
 ### 2023.11.08
   1. Upgraded the authority layers using JWT token and secure the website from direct visit (every manipulation goes after user logged in).
   2. Created pages and APIs to the account features for "forget username or password" and user will be able to set new password after they get autorized by workerID and Phone number.
+
+### 2023.11.09
+  1. Upgraded the authority layers, adding JwtInterceptor to authorize every command. (Large step on web security)
