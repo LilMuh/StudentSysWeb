@@ -2,6 +2,7 @@ package com.tomh.studentspringboot.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.tomh.studentspringboot.common.JwtTokenUtils;
 import com.tomh.studentspringboot.entity.Admin;
 import com.tomh.studentspringboot.entity.Params;
 import com.tomh.studentspringboot.exception.CustomException;
@@ -90,7 +91,6 @@ public class AdminService {
         return false;
     }
 
-
     @Resource
     private AdminDao adminDao;
 
@@ -166,7 +166,11 @@ public class AdminService {
             // If user does not exist, log in fail
             throw new CustomException("The username or password is incorrect");
         } else {
-            // If there exist the user, log in successfully
+            // If there exist the user, log in successfully and set JWT token
+            // generate token
+            String token = JwtTokenUtils.genToken(user.getId()+"",user.getPassword());
+            user.setToken(token);
+            // return the info of user and token
             return user;
         }
     }
@@ -188,5 +192,9 @@ public class AdminService {
             // If there exist the user, return user for further manipulation
             return user;
         }
+    }
+
+    public Admin findById(Integer id) {
+        return adminDao.selectByPrimaryKey(id);
     }
 }

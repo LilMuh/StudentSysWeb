@@ -36,6 +36,8 @@ public class Admin {
     @Column(name = "phonenumber")
     private String phoneNumber;
 
+    @Transient
+    private String token;
 
     // Initialization
     public Admin() {}
@@ -90,5 +92,12 @@ public class Admin {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 
 }

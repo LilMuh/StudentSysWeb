@@ -82,8 +82,12 @@ router.beforeEach((to, from, next) =>{
     next();
   }
   const user = localStorage.getItem("user");
-  if(!user && (to.path!=='/login'&&to.path!=='/register'&&to.path!=='/forget'&&to.path!=='/changePassword')){
-    console.log(123)
+  if(!user && (
+      to.path!=='/login'&&
+      to.path!=='/register'&&
+      to.path!=='/forget'&&
+      to.path!=='/changePassword')
+  ){
     return next("/login")
   }
   next();

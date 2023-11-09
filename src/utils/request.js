@@ -10,7 +10,10 @@ const request = axios.create({
 // // request (拦截器) 再发送请求前可以对请求做一些处理，比如加token或者加密
 request.interceptors.request.use(config => {
     config.headers['Content-Type']= 'application/json;charset=utf-8';
-
+    const user = localStorage.getItem("user");
+    if (user) {
+        config.headers['token'] = JSON.parse(user).token;
+    }
     // 设置请求头 config.headers['token'] = user.token;
     return config;
 }, error => {

@@ -23,7 +23,7 @@
         </div>
         <button class="login-button" type="submit">Login</button>
       </form>
-      <router-link to="/register" class="register-link">Don't have an account? Register here</router-link>
+      <router-link to="/register" class="register-link" index="/login/register">Don't have an account? Register here</router-link>
       <router-link to="/forget" class="forget-link">Forget username or password</router-link>
     </div>
   </div>
