@@ -17,8 +17,7 @@
       <el-table :data="tableData"
                 style="width: 100%; margin-top: 22px"
                 :row-style="{height: '60px'}">
-        <el-table-column prop="id" label="ID" width="50">
-        </el-table-column>
+
         <el-table-column prop="username" label="username" width="180">
         </el-table-column>
         <el-table-column prop="password" label="password" width="180">

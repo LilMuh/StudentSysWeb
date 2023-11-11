@@ -7,6 +7,7 @@ import LayoutView from "@/views/Layout.vue";
 import RegisterView from "@/views/RegisterView.vue";
 import ForgetView from "@/views/ForgetView.vue";
 import ChangePasswordView from "@/views/ChangePWView.vue";
+import EssayView from "@/views/EssayView";
 
 Vue.use(VueRouter)
 
@@ -49,23 +50,15 @@ const routes = [
         component: AdminView
       },
       {
-        // havent done
-        path: 'user',
-        name: 'home',
-        component: HomeView
+        path: 'Essay',
+        name: 'about',
+        component: EssayView
       },
       {
-        // havent done
-        path: 'StudentInfo',
-        name: '',
+        path: 'Design',
+        name: 'about',
         component: HomeView
       },
-      {
-        // havent done
-        path: 'StaffInfo',
-        name: '',
-        component: HomeView
-      }
     ]
   }
 ]

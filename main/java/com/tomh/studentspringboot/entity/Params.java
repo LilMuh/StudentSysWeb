@@ -3,6 +3,8 @@ package com.tomh.studentspringboot.entity;
 public class Params {
     private String username;
     private String workerID;
+    private String name;
+    private String course;
     private String phone;
     private int pageNum;
     private int pageSize;
@@ -21,6 +23,22 @@ public class Params {
 
     public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
     }
 
     public String getWorkerID() {

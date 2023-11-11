@@ -27,23 +27,22 @@
 
           <el-submenu index="/Accounts">
             <template slot="title">
-              <i class="el-icon-location"></i>
+              <i class="el-icon-user"></i>
               <span>Accounts</span>
             </template>
             <el-menu-item-group>
               <el-menu-item index="/Admin">Admin</el-menu-item>
-              <el-menu-item index="/User">User</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
 
           <el-submenu index="Info">
             <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>Info</span>
+              <i class="el-icon-receiving"></i>
+              <span>Portfolio</span>
             </template>
             <el-menu-item-group>
-              <el-menu-item index="/StudentInfo">Student</el-menu-item>
-              <el-menu-item index="/StaffInfo">Staff</el-menu-item>
+              <el-menu-item index="/Design">Graphic design</el-menu-item>
+              <el-menu-item index="/Essay">Essay</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
 
