@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tomh.studentspringboot.mapper.AdminDao">
+    <select id="search" resultType="com.tomh.studentspringboot.entity.Admin">
+        select * from admin
+        <where>
+            <if test="params != null and params.username != null and params.username != ''">
+                and username like concat('%', #{params.username}, '%')
+            </if>
+            <if test="params != null and params.workerID != null and params.workerID != ''">
+                and workerid like concat('%', #{params.workerID}, '%')
+            </if>
+            <if test="params != null and params.phone != null and params.phone != ''">
+                and phonenumber like concat('%', #{params.phone}, '%')
+            </if>
+        </where>
+    </select>
+
+</mapper>
