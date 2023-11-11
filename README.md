@@ -27,3 +27,9 @@ Turning a java-based student system ([StudentSys](https://github.com/LilMuh/Stud
 
 ### 2023.11.09
   1. Upgraded the authority layers, adding JwtInterceptor to authorize every command. (Large step on web security)
+
+### 2023.11.10
+  1. Initialized a new page (EssayView) to upload academic essays as portfolios on the website.
+
+### 2023.11.11
+  1. Further completion on EssayView and back-end APIs
