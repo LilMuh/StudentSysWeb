@@ -3,9 +3,11 @@
 
     <!--    Tool bar on the top (Search/ Clear/ Add)    -->
     <div style="margin-top: 10px">
-      <el-input placeholder="Course" v-model="params.course" clearable style="width: 200px;"></el-input>
+      <el-input placeholder="Course" v-model="params.course" clearable style="width: 150px;"></el-input>
       <el-input placeholder="Title" v-model="params.name" clearable
-                style="width: 200px; margin-left: 10px; margin-right: 0px"></el-input>
+                style="width: 300px; margin-left: 10px; margin-right: 0px"></el-input>
+      <el-input placeholder="Year" v-model="params.year" clearable
+                style="width: 150px; margin-left: 10px; margin-right: 0px"></el-input>
       <el-button type="warning" icon="el-icon-search" style="margin-left: 15px;" @click="search()" plain>Search
       </el-button>
       <el-button type="warning" style="margin-left: 10px;" icon="el-icon-refresh-right" @click="clear()" plain>Clear
@@ -16,28 +18,33 @@
     <!--    Main table with data    -->
     <div>
       <el-table :data="tableData"
-                style="width: 100%; margin-top: 22px"
+                style="width: 100%; margin-top: 22px; font-size: 13px"
                 :row-style="{height: '60px'}">
-        <el-table-column prop="course" label="Course" width="260">
+        <el-table-column prop="course" label="Course" width="150">
         </el-table-column>
-        <el-table-column prop="name" label="Title" width="730">
+        <el-table-column prop="name" label="Title" width="750">
         </el-table-column>
         <el-table-column prop="year" label="Year" width="150">
         </el-table-column>
         <el-table-column prop="command" label="Command">
-          <el-button type="primary" plain @click="edit(scope.row)" style="margin-right: 10px" icon="el-icon-edit">
-            Modify
-          </el-button>
-          <el-popconfirm
-              confirm-button-text='OK'
-              cancel-button-text='Cancel'
-              icon="el-icon-info"
-              icon-color="red"
-              title="Are you sure to delete？"
-              @confirm="del(scope.row.id)"
-          >
-            <el-button type="danger" plain slot="reference" icon="el-icon-delete-solid">Delete</el-button>
-          </el-popconfirm>
+          <template slot-scope="scope">
+            <el-button type="primary" plain @click="download(scope.row.link)" style="" icon="el-icon-download">
+              Download
+            </el-button>
+            <el-button type="primary" plain @click="edit(scope.row)" style="margin-right: 10px" icon="el-icon-edit">
+              Modify
+            </el-button>
+            <el-popconfirm
+                confirm-button-text='OK'
+                cancel-button-text='Cancel'
+                icon="el-icon-info"
+                icon-color="red"
+                title="Are you sure to delete？"
+                @confirm="del(scope.row.id)"
+            >
+              <el-button type="danger" plain slot="reference" icon="el-icon-delete-solid">Delete</el-button>
+            </el-popconfirm>
+          </template>
         </el-table-column>
       </el-table>
     </div>
@@ -86,6 +93,18 @@
               </div>
             </div>
           </el-form-item>
+          <el-form-item label="File" label-width="30%">
+            <div>
+              <el-upload
+                  action="http://localhost:8080/tomH_Page/files/upload"
+                  :on-success="successUpload"
+                  :limit="1"
+                  :on-exceed="handleExceed"
+              >
+                <el-button size="small" round plain>Upload from device</el-button>
+              </el-upload>
+            </div>
+          </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button @click="cancel">Cancel</el-button>
@@ -107,7 +126,7 @@ export default {
       params: {
         name: '',
         course: '',
-        year:'',
+        year: '',
         pageNum: 1,
         pageSize: 10,
       },
@@ -140,7 +159,8 @@ export default {
       this.params = {
         name: '',
         course: '',
-        year:'',
+        year: '',
+        link:'',
         pageNum: 1,
         pageSize: 10,
       },
@@ -150,9 +170,16 @@ export default {
       this.form = {};
       this.dialogFormVisible = true;
     },
+    successUpload(res) {
+      console.log(res)
+    },
     edit(accountInfo) {
       this.form = accountInfo;
       this.dialogFormVisible = true
+      this.search()
+    },
+    download(link) {
+      console.log("Download: "+link)
       this.search()
     },
     handleCurrentChange(pageNum) {
@@ -184,6 +211,9 @@ export default {
           this.$message.error(res.msg);
         }
       })
+    },
+    handleExceed(files, fileList) {
+      this.$message.warning(`You can only upload 1 file at each time`);
     },
   }
 

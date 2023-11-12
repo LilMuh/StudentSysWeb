@@ -6,6 +6,7 @@ public class Params {
     private String name;
     private String course;
     private String year;
+    private String link;
     private String phone;
     private int pageNum;
     private int pageSize;
@@ -73,5 +74,13 @@ public class Params {
 
     public void setYear(String year) {
         this.year = year;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }

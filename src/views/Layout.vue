@@ -17,8 +17,7 @@
 
     <el-container>
       <el-aside style="overflow: hidden; min-height: 100vh; background-color: #555c63;" width="250px">
-        <el-menu default-active="$route.path" router class="el-menu-vertical-demo" @open="handleOpen"
-                 @close="handleClose"
+        <el-menu default-active="$route.path" router class="el-menu-vertical-demo"
                  background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
           <el-menu-item index="/">
             <i class="el-icon-menu"></i>

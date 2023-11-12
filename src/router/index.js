@@ -36,7 +36,7 @@ const routes = [
   },
   {
     path: '/',
-    name: 'Layout',
+    name: '',
     component: LayoutView,
     children:[
       {
@@ -46,17 +46,17 @@ const routes = [
       },
       {
         path: 'admin',
-        name: 'about',
+        name: 'admin',
         component: AdminView
       },
       {
         path: 'Essay',
-        name: 'about',
+        name: 'essay',
         component: EssayView
       },
       {
         path: 'Design',
-        name: 'about',
+        name: 'design',
         component: HomeView
       },
     ]

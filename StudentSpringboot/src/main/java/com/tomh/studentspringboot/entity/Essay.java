@@ -16,8 +16,8 @@ public class Essay {
     private String course;
     @Column(name = "year")
     private String year;
-    @Column(name = "cover")
-    private String cover;
+    @Column(name = "link")
+    private String link;
 
 
 // Initialization
@@ -25,11 +25,11 @@ public class Essay {
     public Essay() {
     }
 
-    public Essay(int id, String name, String course, String cover) {
+    public Essay(int id, String name, String course, String link) {
         this.id = id;
         this.name = name;
         this.course = course;
-        this.cover = cover;
+        this.link = link;
     }
 
 
@@ -59,12 +59,12 @@ public class Essay {
         this.course = course;
     }
 
-    public String getCover() {
-        return cover;
+    public String getLink() {
+        return link;
     }
 
-    public void setCover(String cover) {
-        this.cover = cover;
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public String getYear() {
