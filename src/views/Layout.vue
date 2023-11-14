@@ -34,7 +34,7 @@
             </el-menu-item-group>
           </el-submenu>
 
-          <el-submenu index="Info">
+          <el-submenu index="Portfolio">
             <template slot="title">
               <i class="el-icon-receiving"></i>
               <span>Portfolio</span>
@@ -42,6 +42,17 @@
             <el-menu-item-group>
               <el-menu-item index="/Design">Graphic design</el-menu-item>
               <el-menu-item index="/Essay">Essay</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+
+          <el-submenu index="Games">
+            <template slot="title">
+              <i class="el-icon-receiving"></i>
+              <span>Games</span>
+            </template>
+            <el-menu-item-group>
+              <el-menu-item index="/TexasHoldem">Texas Hold'em</el-menu-item>
+              <el-menu-item index="/">Bi-color ball</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
 

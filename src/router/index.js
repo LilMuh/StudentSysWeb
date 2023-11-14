@@ -7,7 +7,8 @@ import LayoutView from "@/views/Layout.vue";
 import RegisterView from "@/views/RegisterView.vue";
 import ForgetView from "@/views/ForgetView.vue";
 import ChangePasswordView from "@/views/ChangePWView.vue";
-import EssayView from "@/views/EssayView";
+import EssayView from "@/views/EssayView.vue";
+import TexasView from "@/views/TexasView.vue";
 
 Vue.use(VueRouter)
 
@@ -58,6 +59,11 @@ const routes = [
         path: 'Design',
         name: 'design',
         component: HomeView
+      },
+      {
+        path: 'TexasHoldem',
+        name: 'texaspoker',
+        component: TexasView
       },
     ]
   }
