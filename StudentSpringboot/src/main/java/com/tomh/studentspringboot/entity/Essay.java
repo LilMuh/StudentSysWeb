@@ -9,7 +9,6 @@ public class Essay {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
-
     @Column(name = "name")
     private String name;
     @Column(name = "course")
