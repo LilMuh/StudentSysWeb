@@ -4,6 +4,7 @@ public class Card {
 
     private Suit suit;
     private Rank rank;
+    private String back;
 
 // Initialization
     public Card() {
@@ -13,7 +14,11 @@ public class Card {
         this.suit = suit;
         this.rank = rank;
     }
-    // Getters and Setters
+
+    public Card(String back) {
+        this.back = back;
+    }
+// Getters and Setters
 
     public Suit getSuit() {
         return suit;

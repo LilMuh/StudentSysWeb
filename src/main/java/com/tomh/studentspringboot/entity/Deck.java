@@ -33,5 +33,10 @@ public class Deck {
         initializeDeck();
         shuffle();
     }
+
+    public Card dealHideCard() {
+        Card hideCard = new Card("BACK");
+        return hideCard;
+    }
 }
 

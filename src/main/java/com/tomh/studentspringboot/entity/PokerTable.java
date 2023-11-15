@@ -1,5 +1,6 @@
 package com.tomh.studentspringboot.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PokerTable {
@@ -88,5 +89,24 @@ public class PokerTable {
 
     public void setCurrentBet(int currentBet) {
         this.currentBet = currentBet;
+    }
+
+    public void getTable(PokerTable pt, Player player){
+        pt.setId(1);
+        List<Player> tablePlayers = new ArrayList<Player>();
+        // Set bot as players
+        tablePlayers.add(new Player(477561, "Alice", 1000, null, "prepare", 10));
+        tablePlayers.add(new Player(35443, "Bob", 1000, null, "prepare", 10));
+        tablePlayers.add(new Player(498161, "Jack", 1000, null, "prepare", 10));
+        tablePlayers.add(new Player(5873, "May", 1000, null, "prepare", 10));
+        // Add real player into table
+        tablePlayers.add(player);
+        pt.setPlayers(tablePlayers);
+        // set dealer
+        pt.setDealer(new Player(1005991919, "lilfist", 10, null, "dealer", 0));
+        pt.setPot(0);
+        pt.setBigBlind(10);
+        pt.setSmallBlind(5);
+        pt.setCurrentBet(10);
     }
 }

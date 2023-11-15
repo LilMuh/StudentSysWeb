@@ -13,19 +13,18 @@ public class Player {
     private String name;
     @Column(name = "chips")
     private int chips;
-    @Column(name = "hand")
-    private String hand;
+    @Transient
+    private Hand hand;
     @Column(name = "status")
     private String status;
-    @Column(name = "currentBet")
+    @Column(name = "current_bet")
     private int currentBet;
 
 // Initialization
-
     public Player() {
     }
 
-    public Player(int id, String name, int chips, String hand, String status, int currentBet) {
+    public Player(int id, String name, int chips, Hand hand, String status, int currentBet) {
         this.id = id;
         this.name = name;
         this.chips = chips;
@@ -35,8 +34,6 @@ public class Player {
     }
 
 // Getters and Setters
-
-
     public int getId() {
         return id;
     }
@@ -61,11 +58,11 @@ public class Player {
         this.chips = chips;
     }
 
-    public String getHand() {
+    public Hand getHand() {
         return hand;
     }
 
-    public void setHand(String hand) {
+    public void setHand(Hand hand) {
         this.hand = hand;
     }
 

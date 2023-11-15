@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.annotation.Resource;
@@ -29,6 +30,12 @@ public class WebConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/tomH_Page/admin/forget")
                 .excludePathPatterns("/tomH_Page/admin/changePassword")
                 .excludePathPatterns("/tomH_Page/files/**")
-                .excludePathPatterns("/tomH_Page/admin/TexasHoldem");
+                .excludePathPatterns("/tomH_Page/TexasHoldem/**");
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/cardImage/**")
+                .addResourceLocations("classpath:/static/cardImage/");
     }
 }
